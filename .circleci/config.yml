@@ -84,6 +84,6 @@ jobs:
 workflows:
   version: 2
   fullstack-build:
-  jobs:
-    - frontend-build
-    - backend-build
+    jobs:
+      - frontend-build
+      - backend-build
