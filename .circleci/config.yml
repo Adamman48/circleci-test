@@ -46,8 +46,6 @@ jobs:
           command: |
             npm run lint
   
-version: 2
-jobs:
   build:
     docker:
       # specify the version you desire here
