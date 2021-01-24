@@ -17,6 +17,7 @@ jobs:
     working_directory: ~/repo
 
     steps:
+      - checkout
 
       # Download and cache dependencies
       - restore_cache:
@@ -25,6 +26,10 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
+      - run:
+          name: Checkout to frontend
+          command: |
+            cd ./frontend/final-project
       - run:
           name: Install pkgs
           command: |
