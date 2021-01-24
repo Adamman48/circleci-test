@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  frontend-build:
+  build:
     docker:
       # specify the version you desire here
       - image: circleci/node:10.15.0-browsers
@@ -19,8 +19,7 @@ jobs:
 
       # Download and cache dependencies
       - restore_cache:
-          paths:
-            - frontend/final-project
+      # paths maybe needed
           keys:
             - v1-dependencies-{{ checksum "./frontend/final-project/package.json" }}
             # fallback to using the latest cache if no exact match is found
@@ -47,7 +46,9 @@ jobs:
           command: |
             npm run lint
   
-  backend-build:
+version: 2
+jobs:
+  build:
     docker:
       # specify the version you desire here
       - image: circleci/node:10.15.0-browsers
@@ -63,13 +64,13 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "./frontend/final-project/package.json" }}
+            - v1-dependencies-{{ checksum "./backend/package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
       - run:
           name: Install pkgs
-          working_directory: ./backend
+          working_directory: ./frontend/final-project
           command: |
             npm install
       - save_cache:
@@ -82,3 +83,8 @@ jobs:
           working_directory: ./backend
           command: |
             npm run test
+      - run:
+          name: Linting
+          working_directory: ./backend
+          command: |
+            npm run lint
