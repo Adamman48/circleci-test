@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  build:
+  frontend-build:
     docker:
       # specify the version you desire here
       - image: circleci/node:10.15.0-browsers
@@ -46,7 +46,7 @@ jobs:
           command: |
             npm run lint
   
-  build:
+  backend-build:
     docker:
       # specify the version you desire here
       - image: circleci/node:10.15.0-browsers
