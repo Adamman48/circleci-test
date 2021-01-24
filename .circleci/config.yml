@@ -27,11 +27,8 @@ jobs:
             - v1-dependencies-
 
       - run:
-          name: Checkout to frontend
-          command: |
-            cd ./frontend/final-project
-      - run:
           name: Install pkgs
+          working_directory: ./frontend/final-project
           command: |
             npm install
       - save_cache:
