@@ -89,6 +89,7 @@ jobs:
 
 workflows:
   version: 2
-  jobs:
-    - frontend-build
-    - backend-build
+  whatever:
+    jobs:
+      - frontend-build
+      - backend-build
