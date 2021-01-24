@@ -75,11 +75,11 @@ jobs:
             - backend/node_modules
           key: v1-dependencies-{{ checksum "./backend/package.json" }}
 
-      - run: 
-          name: Tests
-          working_directory: ./backend
-          command: |
-            npm run test
+      #- run: 
+      #   name: Tests
+      #   working_directory: ./backend
+      #   command: |
+      #     npm run test
 
 workflows:
   version: 2
