@@ -19,6 +19,8 @@ jobs:
 
       # Download and cache dependencies
       - restore_cache:
+          paths:
+            - ./frontend/final-project
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
@@ -30,9 +32,8 @@ jobs:
           command: |
             npm install
       - save_cache:
-          working_directory: ./frontend/final-project
           paths:
-            - node_modules
+            - ./frontend/final-project/node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: 
