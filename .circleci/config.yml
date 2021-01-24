@@ -19,7 +19,6 @@ jobs:
 
       # Download and cache dependencies
       - restore_cache:
-      # paths maybe needed
           keys:
             - v1-dependencies-{{ checksum "./frontend/final-project/package.json" }}
             # fallback to using the latest cache if no exact match is found
@@ -68,7 +67,7 @@ jobs:
 
       - run:
           name: Install pkgs
-          working_directory: ./frontend/final-project
+          working_directory: ./backend
           command: |
             npm install
       - save_cache:
@@ -81,14 +80,10 @@ jobs:
           working_directory: ./backend
           command: |
             npm run test
-      - run:
-          name: Linting
-          working_directory: ./backend
-          command: |
-            npm run lint
 
 workflows:
   version: 2
+  fullstack-build:
   jobs:
     - frontend-build
     - backend-build
